@@ -1,0 +1,199 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/*--------------------------------------------- FONTS AND UNITS */
+/*  font-family: 'Inter', sans-serif;
+    font-family: 'Lexend Deca', sans-serif; */
+html {
+  font-size: 15px;
+}
+h1 {
+  font-size: 2rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+#txt-accent {
+  color: hsl(277, 64%, 61%);
+}
+p {
+  line-height: 2rem;
+  font-size: 1rem;
+  color: hsla(0, 0%, 100%, 0.75);
+  font-family: "Lexend Deca", sans-serif;
+}
+/*-------------------------------------------- Background Color */
+body {
+  background-color: hsl(233, 47%, 7%);
+  min-width: 375px;
+  margin-top: 70px; /* QUITAR LUEGO */
+  display: grid;
+  place-items: center;
+}
+/*-------------------------------------------------------- CARD */
+.card {
+  display: grid;
+  grid-template-areas:
+    "hero-img"
+    "hero-title"
+    "description"
+    "statistics";
+  border-radius: 10px;
+  width: 375px;
+  /* padding-left: 5px;
+  padding-right: 5px; */
+  max-height: 891px;
+  background-color: hsl(244, 38%, 16%);
+}
+/*---------------------------------------------------- HERO-IMG */
+#hero-img {
+  grid-area: "hero-img";
+  position: relative;
+  width: 100%;
+  height: 270px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-image: url(./images/image-header-mobile.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#hero-img::before {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  content: "";
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: hsl(277, 64%, 61%);
+  opacity: 0.6;
+}
+/*-------------------------------------------------- Hero-title */
+.hero-title {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding: 0 2.9rem;
+  grid-area: "hero-title";
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+}
+/*------------------------------------------------- Description */
+.description {
+  margin-bottom: 1rem;
+  padding: 0 3rem;
+  text-align: center;
+  grid-area: "description";
+}
+/*------------------------------------------------- Statisctics */
+.statistics {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(1fr);
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.statistics-item span {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+  color: hsl(0, 0%, 100%);
+  font-weight: 700;
+}
+.statistics-item {
+  margin: 10px 0;
+}
+/*------------------------------------ Media Query para Desktop */
+@media (min-width: 676px) {
+  body {
+    margin-top: initial;
+    width: initial;
+    height: 100vh;
+    /* max-width: 1440px; */
+  }
+  .card {
+    width: initial; /* -----This save my life--------*/
+    max-width: 1113px;
+    height: 446px;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "hero-title hero-img"
+      "description hero-img"
+      "statistics hero-img"
+      "footer hero-img";
+  }
+  .hero-title {
+    padding-top: 1rem;
+    padding-left: 5rem;
+    font-size: 2.5rem;
+    text-align: left;
+    grid-area: hero-title;
+  }
+  #hero-img {
+    background-image: url(./images/image-header-desktop.jpg);
+    height: initial;
+    height: 100%;
+    /* height: 560px; */
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 10px;
+    grid-area: hero-img;
+    background-size: cover;
+  }
+  #hero-img::before {
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 10px;
+  }
+  .description {
+    padding-left: 5rem;
+    padding-right: 8rem;
+    font-size: 1rem;
+    text-align: left;
+    grid-area: description;
+  }
+  .statistics {
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 5.5rem;
+    grid-area: statistics;
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
+    grid-template-rows: 1fr;
+    justify-content: center;
+  }
+  .attribution {
+    grid-area: footer;
+  }
+}
+@media (max-width: 1028px) and (min-width: 676px) {
+  .card {
+    height: initial;
+    grid-template-areas:
+      "hero-title hero-img"
+      "description hero-img"
+      "statistics hero-img";
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+  .description {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    font-size: 0.9rem;
+  }
+  .statistics {
+    padding-left: 4rem;
+    padding-right: 5.5rem;
+  }
+  .statistics-item span {
+    font-size: 1rem;
+  }
+  .statistics-item p {
+    font-size: 0.7rem;
+  }
+}
